@@ -1,0 +1,1 @@
+cc main.c ./utils/vector.c ./utils/vector2.c ./utils/vector3.c
