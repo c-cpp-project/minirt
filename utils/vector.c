@@ -17,7 +17,7 @@ void    set_vector(t_vector *vector, double x, double y, double z)
 }
 
 double    inner_product(t_vector vector1, t_vector vector2) {
-    return vector1.x * vector2.x + vector1.y * vector2.y + vector1.z + vector2.z;
+    return vector1.x * vector2.x + vector1.y * vector2.y + vector1.z * vector2.z;
 }
 
 double  len(t_vector vector) {
