@@ -2,6 +2,6 @@
 */*.out
 *.out
 # no my test dir
-yuikim/*
+# yuikim/*
 # no test ppm
 *.ppm
