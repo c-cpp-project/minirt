@@ -13,7 +13,7 @@ typedef struct s_camera
 {
 	t_vector	position;
 	t_vector	dv;// normalization orientation vector, 벡터 크기 1로 받기
-	int			fov;
+	float		fov;//시야각 0 ~ 180도
 }t_camera;
 
 typedef struct s_light
