@@ -1,7 +1,7 @@
 #ifndef STRUCTURE_H
 # define STRUCTURE_H
 
-#include "utils/utils.h"
+#include "utils/ray.h"
 
 typedef struct s_ambient
 {

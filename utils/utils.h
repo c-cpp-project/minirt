@@ -4,6 +4,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+#define PI 3.1415926535897932385;
 
 typedef struct s_vector t_vector;
 
@@ -30,8 +31,13 @@ t_vector    minus_vector(t_vector vector1, t_vector vector2);
 t_vector    minus_vector2(t_vector vector1, double x, double y, double z);
 t_vector    scalar_multiply(t_vector vector1, double t);
 t_vector    cross_product(t_vector vector1, t_vector vector2);
+void        print_vector(t_vector vector);
 
-t_color new_color(double r, double g, double b);
+t_color     new_color(double r, double g, double b);
+t_color    plus_color(t_color color1, t_color color2);
+t_color multiply_color(t_color color, double t);
+
+double degrees_to_radians(double degree);
 
 
 #endif
