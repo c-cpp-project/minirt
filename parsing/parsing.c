@@ -6,7 +6,7 @@
 /*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 13:28:54 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/06 14:22:38 by sangwoki         ###   ########.fr       */
+/*   Updated: 2023/08/06 15:37:20 by sangwoki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*write_buffer(int fd)
 		src = dest;
 	}
 	dest[length] = 0;
-	// printf("dest \n\n[%s]", dest);
+	// printf("dest \n\n[%s]\n\n", dest);
 	return (dest);
 }
 
@@ -86,7 +86,7 @@ t_scene	*assigne_scene(char *src, t_count *element)
 	t_scene	*scene;
 
 	buffer = ft_split(src, '\n');
-	element = (t_count *)malloc(sizeof(t_count));
 	scene = tokenizer(buffer, element);
+	free_split(buffer);
 	return (scene);
 }

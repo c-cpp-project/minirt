@@ -6,7 +6,7 @@
 /*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 15:30:11 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/05 19:40:45 by sangwoki         ###   ########.fr       */
+/*   Updated: 2023/08/06 15:35:20 by sangwoki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ t_sphere	*extract_sphere(char **buffer, t_count *element)
 	idx = 0;
 	while (buffer[i] && idx < element->sphere)
 	{
-		if (ft_strncmp(buffer[i], "A", 1) == 0)
+		if (ft_strncmp(buffer[i], "sp", 2) == 0)
 		{
 			value = ft_split(buffer[i], ' ');
 			node[idx].center = get_vector(value[1]);
@@ -132,7 +132,7 @@ t_plane	*extract_plane(char **buffer, t_count *element)
 	idx = 0;
 	while (buffer[i] && idx < element->plane)
 	{
-		if (ft_strncmp(buffer[i], "A", 1) == 0)
+		if (ft_strncmp(buffer[i], "pl", 2) == 0)
 		{
 			value = ft_split(buffer[i], ' ');
 			node[idx].point = get_vector(value[1]);

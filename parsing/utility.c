@@ -6,7 +6,7 @@
 /*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 14:07:43 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/06 14:16:43 by sangwoki         ###   ########.fr       */
+/*   Updated: 2023/08/06 15:37:06 by sangwoki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,10 @@ t_vector	get_vector(char *buffer)
 	while (line[i])
 	{
 		nbr[i] = ft_atol(line[i]);
+		// printf("%lf, ", nbr[i]);
 		i++;
 	}
+	// printf("\n");
 	free_split(line);
 	return (new_vector(nbr[X] * 1.0, nbr[Y] * 1.0, nbr[Z] * 1.0));
 }

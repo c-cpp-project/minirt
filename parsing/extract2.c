@@ -6,7 +6,7 @@
 /*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 18:40:26 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/06 13:06:55 by sangwoki         ###   ########.fr       */
+/*   Updated: 2023/08/06 15:35:32 by sangwoki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_cylinder	*extract_cylinder(char **buffer, t_count *element)
 	idx = 0;
 	while (buffer[i] && idx < element->cylinder)
 	{
-		if (ft_strncmp(buffer[i], "A", 1) == 0)
+		if (ft_strncmp(buffer[i], "cy", 2) == 0)
 		{
 			value = ft_split(buffer[i], ' ');
 			node[idx].center = get_vector(value[1]);

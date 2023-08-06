@@ -6,7 +6,7 @@
 /*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 17:00:26 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/06 14:24:39 by sangwoki         ###   ########.fr       */
+/*   Updated: 2023/08/06 15:20:01 by sangwoki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,5 @@ void	parameter_count(char **buffer, t_count *element)
 		parameter_format(buffer[i], element, buffer[i]);
 		i++;
 	}
-	free_split(buffer);
+	// printf("%d %d %d %d %d %d\n", element->ambient, element->camera, element->light, element->plane, element->sphere, element->cylinder);
 }
