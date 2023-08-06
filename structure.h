@@ -47,10 +47,11 @@ typedef struct s_cylinder{
 	t_vector bottom;
 }	t_cylinder;
 
-typedef struct s_scene{
-	t_ambient	a;
-	t_camera	c;
-	t_light		l;
+typedef struct s_scene
+{
+	t_ambient	*a;
+	t_camera	*c;
+	t_light		*l;
 	t_sphere	*sp;
 	t_plane		*pl;
 	t_cylinder	*cl;
