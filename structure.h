@@ -51,9 +51,9 @@ typedef struct s_scene{
 	t_ambient	a;
 	t_camera	c;
 	t_light		l;
-	t_sphere	sp;
-	t_plane		pl;
-	t_cylinder	cl;
+	t_sphere	*sp;
+	t_plane		*pl;
+	t_cylinder	*cl;
 }	t_scene;
 
 #endif
