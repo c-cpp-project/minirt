@@ -43,6 +43,8 @@ typedef struct s_cylinder{
 	double radius; // diameter 지름 2로 나눈 값
 	double height;
 	t_color color;
+	t_vector top;
+	t_vector bottom;
 }	t_cylinder;
 
 typedef struct s_scene{

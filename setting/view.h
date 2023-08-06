@@ -28,5 +28,12 @@ t_vector getleft_bottom(t_vector origin, t_vector horizontal, t_vector vertical,
 
 //check_hit.c
 double hit_sphere(t_sphere sphere, t_ray ray);
+double hit_cylinder(t_cylinder cylinder, t_ray ray);
+double hit_cylinder_side(t_cylinder cylinder, t_ray ray);
+double hit_cylinder_cap(t_cylinder cylinder, t_ray ray, t_vector cap_center);
+double hit_plane(t_plane plane, t_ray ray);
+
+//cylinder 설정
+void add_top_and_bottom_vector(t_cylinder *cylinder);
 
 #endif
