@@ -3,12 +3,21 @@
 t_color ray_color(t_ray ray, t_scene scene, t_count count)
 {
 	
-	t_hit_record record = hit_world(scene, count, ray, 0.1, 20000);
-    printf("test : %d\n", count.cylinder);
+    // t_hit_record record = hit_cylinder(scene.cl[1], ray);
+    // printf("cy : %f %f\n",scene.cl[0].radius, scene.cl[0].height);
+    // print_vector(scene.cl[0].center);
+    // print_vector(scene.cl[0].bottom);
+    // print_vector(scene.cl[0].top);
+    // print_vector(scene.cl[0].dv);
+    // print_vector(ray.dv);
+    // print_vector(ray.origin);
+    
+	t_hit_record record = hit_world(scene, count, ray, 0, INF);
+    // printf("test : %d\n", count.cylinder);
 	double t = record.t;
 	if (t > 0.0) {
-		printf("test: %f\n", t);
-		t_vector vector_n = unit(minus_vector(ray_at(&ray, t), new_vector(0, 0, -1)));
+		// printf("test: %f\n", t);
+		t_vector vector_n = unit(minus_vector(ray_at(&ray, t), scene.cl[0].center));
 		return multiply_color(new_color(vector_n.x + 1, vector_n.y + 1, vector_n.z + 1), 0.5);
 	}
 
@@ -29,14 +38,23 @@ int main() {
     scene.cl = malloc(sizeof(t_cylinder) * 3);
     scene.pl = NULL;
     scene.sp = NULL;
-    counts.sphere = 0;
+    counts.sphere = 2;
     counts.cylinder = 3;
     counts.plane = 0;
+    scene.cl = malloc(sizeof(t_cylinder) * counts.cylinder);
+    scene.sp = malloc(sizeof(t_sphere) * counts.sphere);
 
-    for (int i = 0 ; i < 3; i++) {
-        scene.cl[i].center = new_vector(0, 0, -1 + 0.5 * (float)i);
-        scene.cl[i].radius = 0.5;
+    for (int i = 0 ; i < counts.cylinder; i++) {
+        scene.cl[i].center = new_vector(0, 0 - 1.0 * (double) i, -2);
+        scene.cl[i].radius = 0.3;
         scene.cl[i].height = 1.0;
+        scene.cl[i].dv = unit(new_vector(1, 1.1, 0));
+        add_top_and_bottom_vector(&scene.cl[i]);
+    }
+
+    for (int i = 0; i < counts.sphere; i++) {
+        scene.sp[i].center = new_vector(- 1.0 * (double) i, 0, -2);
+        scene.sp[i].radius = 0.2;
     }
 
 

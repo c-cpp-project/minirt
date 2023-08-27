@@ -13,7 +13,8 @@ t_color ray_color(t_ray ray)
 	// 	t_vector vector_n = unit(minus_vector(ray_at(&ray, t), new_vector(0, 0, -1)));
 	// 	return multiply_color(new_color(vector_n.x + 1, vector_n.y + 1, vector_n.z + 1), 0.5);
 	// }
-
+	// print_vector(ray.dv);
+    // print_vector(ray.origin);
 	t_cylinder cy;
 	cy.center = new_vector(0, 0, -1);
 	cy.radius = 0.5;
@@ -69,7 +70,7 @@ int main()
             // printf("%d %d %d\n", (int)(255.999 * r), (int)(255.999 * g), (int)(255.999 * b));
 			// print_vector(scalar_multiply(horizontal, v));
 			t_color color = ray_color(r);
-			write_color(ray_color(r));
+			write_color(color);
             ++i;
         }
         --j;

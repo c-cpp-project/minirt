@@ -9,27 +9,21 @@ t_hit_record hit_world(t_scene scene, t_count count, t_ray ray, double t_min, do
     while (++i < count.cylinder)
     {
         record = hit_cylinder(scene.cl[i], ray);
-        if (current_min(record.t, result.t, t_min, t_max)) {
-            result = record;
-        }
+        if (current_min(record.t, result.t, t_min, t_max)) result = record;
     }
     i = -1;
     while (++i < count.sphere)
     {
         record = hit_sphere(scene.sp[i], ray);
-        if (current_min(record.t, result.t, t_min, t_max)) {
-            result = record;
-        }
+        if (current_min(record.t, result.t, t_min, t_max)) result = record;
     }
     i = -1;
     while (++i < count.plane)
     {
         record = hit_plane(scene.pl[i], ray);
-        if (current_min(record.t, result.t, t_min, t_max)) {
-            result = record;
-        }
+        if (current_min(record.t, result.t, t_min, t_max)) result = record;
     }
-	return record;
+	return result;
 }
 
 

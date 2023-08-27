@@ -20,7 +20,6 @@ t_hit_record	hit_cylinder(t_cylinder cylinder, t_ray ray)
 		record.normal = cylinder.dv;
 	else
 		record.normal = scalar_multiply(cylinder.dv, -1.0);
-	printf("record: %f %f %f %f\n", t1, t2, t3, t);
 	return record;
 }
 
