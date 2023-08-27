@@ -18,7 +18,8 @@ t_color ray_color(t_ray ray, t_scene scene, t_count count)
 	if (t > 0.0) {
 		// printf("test: %f\n", t);
 		t_vector vector_n = unit(minus_vector(ray_at(&ray, t), scene.cl[0].center));
-		return multiply_color(new_color(vector_n.x + 1, vector_n.y + 1, vector_n.z + 1), 0.5);
+		//return multiply_color(new_color(vector_n.x + 1, vector_n.y + 1, vector_n.z + 1), 0.5);
+        return multiply_color(new_color(record.normal.x * 0.5 + 1, record.normal.y * 0.5 + 1, record.normal.z * 0.5 + 1), 0.5);
 	}
 
 
@@ -35,28 +36,32 @@ void write_color(t_color color) {
 int main() {
     t_scene scene;
     t_count counts;
-    scene.cl = malloc(sizeof(t_cylinder) * 3);
     scene.pl = NULL;
     scene.sp = NULL;
     counts.sphere = 2;
     counts.cylinder = 3;
-    counts.plane = 0;
+    counts.plane = 1;
     scene.cl = malloc(sizeof(t_cylinder) * counts.cylinder);
     scene.sp = malloc(sizeof(t_sphere) * counts.sphere);
+    scene.pl = malloc(sizeof(t_plane) * counts.plane);
 
     for (int i = 0 ; i < counts.cylinder; i++) {
         scene.cl[i].center = new_vector(0, 0 - 1.0 * (double) i, -2);
         scene.cl[i].radius = 0.3;
         scene.cl[i].height = 1.0;
-        scene.cl[i].dv = unit(new_vector(1, 1.1, 0));
+        scene.cl[i].dv = unit(new_vector(1, -1.1, 0));
         add_top_and_bottom_vector(&scene.cl[i]);
     }
 
     for (int i = 0; i < counts.sphere; i++) {
         scene.sp[i].center = new_vector(- 1.0 * (double) i, 0, -2);
-        scene.sp[i].radius = 0.2;
+        scene.sp[i].radius = 0.5;
     }
 
+    for (int i = 0; i < counts.plane; i++) {
+        scene.pl[i].dv = new_vector(0 ,1, 0);
+        scene.pl[i].point = new_vector(0, -1, -2);
+    }
 
     double aspect_ratio = 16.0 / 9.0;
 	int	image_width = 400;

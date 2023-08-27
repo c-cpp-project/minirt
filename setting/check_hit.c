@@ -16,10 +16,10 @@ t_hit_record	hit_cylinder(t_cylinder cylinder, t_ray ray)
 		record.normal = unit(minus_vector(record.pos, plus_vector(cylinder.center, scalar_multiply(cylinder.dv, 
 		inner_product(minus_vector(record.pos, cylinder.center), cylinder.dv)))));
 	}
-	if (inner_product(record.pos, cylinder.dv) < 0)
-		record.normal = cylinder.dv;
+	if (inner_product(record.pos, record.normal) < 0)
+		;
 	else
-		record.normal = scalar_multiply(cylinder.dv, -1.0);
+		record.normal = scalar_multiply(record.normal, -1.0);
 	return record;
 }
 

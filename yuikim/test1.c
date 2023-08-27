@@ -26,7 +26,7 @@ t_color ray_color(t_ray ray)
 	if (t > 0.0) {
 		// printf("test: %f\n", t);
 		t_vector vector_n = unit(minus_vector(ray_at(&ray, t), new_vector(0, 0, -1)));
-		return multiply_color(new_color(vector_n.x + 1, vector_n.y + 1, vector_n.z + 1), 0.5);
+		return multiply_color(new_color(0.5 * vector_n.x + 0.5, 0.5 * vector_n.y + 0.5, 0.5 * vector_n.z + 0.5), 0.5);
 	}
 
 
