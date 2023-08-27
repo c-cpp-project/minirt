@@ -5,6 +5,7 @@
 # include <stdlib.h>
 
 #define PI 3.1415926535897932385;
+#define INF 4503599627370495
 
 typedef struct s_vector t_vector;
 

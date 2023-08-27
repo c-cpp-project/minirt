@@ -1,15 +1,27 @@
 #include "view.h"
 
-double hit_world(t_scene scene) {
-	return 0.0;
-}
-
-double hit_cylinder(t_cylinder cylinder, t_ray ray)
+t_hit_record	hit_cylinder(t_cylinder cylinder, t_ray ray)
 {
-	double t;
-	t = positive_min_2(hit_cylinder_cap(cylinder, ray, cylinder.bottom),
-		hit_cylinder_cap(cylinder, ray, cylinder.top));
-	return positive_min_2(hit_cylinder_side(cylinder, ray), t);
+	t_hit_record record;
+	double	t1 = hit_cylinder_cap(cylinder, ray, cylinder.bottom);
+	double	t2 = hit_cylinder_cap(cylinder, ray, cylinder.top);
+	double	t3 = hit_cylinder_side(cylinder, ray);
+	double	t;
+
+	t = positive_min_2(positive_min_2(t1, t2), t3);
+	record.t = t;
+	record.pos = ray_at(&ray, t);
+	if (t == t3)
+	{
+		record.normal = unit(minus_vector(record.pos, plus_vector(cylinder.center, scalar_multiply(cylinder.dv, 
+		inner_product(minus_vector(record.pos, cylinder.center), cylinder.dv)))));
+	}
+	if (inner_product(record.pos, cylinder.dv) < 0)
+		record.normal = cylinder.dv;
+	else
+		record.normal = scalar_multiply(cylinder.dv, -1.0);
+	printf("record: %f %f %f %f\n", t1, t2, t3, t);
+	return record;
 }
 
 double hit_cylinder_side(t_cylinder cylinder, t_ray ray) {
@@ -30,7 +42,7 @@ double hit_cylinder_side(t_cylinder cylinder, t_ray ray) {
 	vector = ray_at(&ray, t);
 	if (fabs(inner_product(minus_vector(vector, cylinder.center), cylinder.dv)) <= cylinder.height / 2 ) {
 		return (t);
-	} 
+	}
 	return (-1.0);
 }
 
@@ -52,16 +64,22 @@ double hit_cylinder_cap(t_cylinder cylinder, t_ray ray, t_vector cap_center) {
 	return -1.0;
 }
 
-double hit_sphere(t_sphere sphere, t_ray ray)
+t_hit_record	hit_sphere(t_sphere sphere, t_ray ray)
 {
+	t_hit_record record;
 	t_vector co = minus_vector(ray.origin, sphere.center);
 	double a = inner_product(ray.dv, ray.dv);
 	double b = 2.0 * inner_product(co, ray.dv);
 	double c = inner_product(co, co) - sphere.radius * sphere.radius;
-	return positive_min_root_two_degree(a, b, c);
+
+	record.t = positive_min_root_two_degree(a, b, c);
+	record.pos = ray_at(&ray, record.t);
+	record.normal = unit(minus_vector(record.pos, sphere.center));
+	return record;
 }
 
-double hit_plane(t_plane plane, t_ray ray) {
+t_hit_record	hit_plane(t_plane plane, t_ray ray) {
+	t_hit_record record;
 	double b;
 	double c;
 	t_vector po; 
@@ -69,5 +87,12 @@ double hit_plane(t_plane plane, t_ray ray) {
 	po = minus_vector(ray.origin, plane.point);
 	b = inner_product(ray.dv , plane.dv);
 	c = - inner_product(po, plane.dv);
-	return positive_min_root_one_degree(b, c);
+
+	record.t = positive_min_root_one_degree(b, c);
+	record.pos = ray_at(&ray, record.t);
+	if (inner_product(record.pos, plane.dv) < 0)
+		record.normal = plane.dv;
+	else
+		record.normal = scalar_multiply(plane.dv, -1.0);
+	return record;
 }
