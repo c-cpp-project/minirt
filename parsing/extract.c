@@ -6,7 +6,7 @@
 /*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 15:30:11 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/06 15:35:20 by sangwoki         ###   ########.fr       */
+/*   Updated: 2023/08/27 16:36:04 by sangwoki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ t_ambient	*extract_ambient(char **buffer, t_count *element)
 	{
 		if (ft_strncmp(buffer[i], "A", 1) == 0)
 		{
-			value = ft_split(buffer[i], ' ');
+			value = ft_split_group(buffer[i], TRUE);
 			node[idx].ratio = ft_atol(value[1]);
+			if (! (0 <= node[idx].ratio && node[idx].ratio <= 1))
+				put_error("out of lighting ratio range");
 			node[idx].color = get_color(value[2]);
 			free_split(value);
 			idx++;
@@ -53,10 +55,12 @@ t_camera	*extract_camera(char **buffer, t_count *element)
 	{
 		if (ft_strncmp(buffer[i], "C", 1) == 0)
 		{
-			value = ft_split(buffer[i], ' ');
-			node[idx].position = get_vector(value[1]);
-			node[idx].dv = unit(get_vector(value[2]));
+			value = ft_split_group(buffer[i], TRUE);
+			node[idx].position = get_vector(value[1], FALSE);
+			node[idx].dv = unit(get_vector(value[2], TRUE));
 			node[idx].fov = ft_atol(value[3]);
+			if (! (0 <= node[idx].fov && node[idx].fov <= 180))
+				put_error("out of FOV range");
 			free_split(value);
 			idx++;
 		}
@@ -80,9 +84,11 @@ t_light	*extract_light(char **buffer, t_count *element)
 	{
 		if (ft_strncmp(buffer[i], "L", 1) == 0)
 		{
-			value = ft_split(buffer[i], ' ');
-			node[idx].position = get_vector(value[1]);
+			value = ft_split_group(buffer[i], TRUE);
+			node[idx].position = get_vector(value[1], FALSE);
 			node[idx].ratio = ft_atol(value[2]);
+			if (! (0 <= node[idx].ratio && node[idx].ratio <= 1))
+				put_error("out of light range");
 			node[idx].color = get_color(value[3]);
 			free_split(value);
 			idx++;
@@ -107,8 +113,8 @@ t_sphere	*extract_sphere(char **buffer, t_count *element)
 	{
 		if (ft_strncmp(buffer[i], "sp", 2) == 0)
 		{
-			value = ft_split(buffer[i], ' ');
-			node[idx].center = get_vector(value[1]);
+			value = ft_split_group(buffer[i], TRUE);
+			node[idx].center = get_vector(value[1], FALSE);
 			node[idx].radius = ft_atol(value[2]) / 2;
 			node[idx].color = get_color(value[3]);
 			free_split(value);
@@ -134,9 +140,9 @@ t_plane	*extract_plane(char **buffer, t_count *element)
 	{
 		if (ft_strncmp(buffer[i], "pl", 2) == 0)
 		{
-			value = ft_split(buffer[i], ' ');
-			node[idx].point = get_vector(value[1]);
-			node[idx].dv = unit(get_vector(value[2]));
+			value = ft_split_group(buffer[i], TRUE);
+			node[idx].point = get_vector(value[1], FALSE);
+			node[idx].dv = unit(get_vector(value[2], TRUE));
 			node[idx].color = get_color(value[3]);
 			free_split(value);
 			idx++;
