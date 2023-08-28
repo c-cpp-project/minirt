@@ -21,15 +21,15 @@ t_eye set_eye(t_scene scene, double aspect_ratio, t_vector look_at) {
 	t_eye eye;
 	double focal_len;
 	//eye.focal_len = (float) WIDTH / 2 / tan(degrees_to_radians(scene.c.fov) / 2);
-	double theta = degrees_to_radians(scene.c.fov);
+	double theta = degrees_to_radians(scene.c->fov);
 	eye.view_height = 2.0 * tan(theta / 2);
 	eye.view_width = aspect_ratio * eye.view_height;
 	// eye.focal_len = 1.0;
 
 	t_vector w = unit(minus_vector(eye.origin, look_at));
-	t_vector u = unit(cross_product(scene.c.dv, w));
+	t_vector u = unit(cross_product(scene.c->dv, w));
 	t_vector v = cross_product(w, u);
-	eye.origin = scene.c.position;
+	eye.origin = scene.c->position;
 	eye.horizontal = scalar_multiply(u, eye.view_width);
 	eye.vertical = scalar_multiply(v, eye.view_height);
 	eye.left_bottom = getleft_bottom(eye.origin, eye.horizontal, eye.vertical, w);
