@@ -6,7 +6,7 @@
 /*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 13:31:23 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/06 13:55:51 by sangwoki         ###   ########.fr       */
+/*   Updated: 2023/08/27 16:35:31 by sangwoki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,19 @@ char		*ft_strdup(char *dest, size_t length);
 size_t		ft_strlcat(char *dest, const char *src, size_t size);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 t_color		get_color(char *buffer);
-t_vector	get_vector(char *buffer);
+t_vector	get_vector(char *buffer, int is_normalize);
 
 // parsing.c
 char		*write_buffer(int fd);
 t_scene		*parsing(const char *path, t_count *element);
 void		put_error(char *msg);
 t_scene		*tokenizer(char **buffer, t_count *element);
-t_scene		*assigne_scene(char *src, t_count *element);
+t_scene		*assign_scene(char *src, t_count *element);
 
 // format_check.c
 void		parameter_init(t_count *element);
-void		parameter_format(char *line, t_count *element, char *mode);
-void		parameter_count(char **buffer, t_count *element);
+void		parameter_format(char **line, char *mode);
+void		parameter_count(char *buffer, t_count *element);
 void		each_is(t_count *element);
 
 // ft_split.c
@@ -64,6 +64,13 @@ char		*mk_leaf(const char *str, size_t len);
 size_t		mk_tree(char const *s, char c, size_t size, char **branch);
 char		**ft_split(char const *s, char c);
 void		free_split(char **buffer);
+
+// ft_split_group.c
+int			exclude_whitespace(char *str, int is_whitespace, int s_idx);
+size_t		mk_branch_group(char *str, int is_white);
+char		*mk_leaf_group(char *str, size_t len);
+size_t		mk_tree_group(char *str, int flag, size_t size, char **branch);
+char		**ft_split_group(char *s, int is_whitespace);
 
 // ft_math.c
 double		ft_atol(const char *str);

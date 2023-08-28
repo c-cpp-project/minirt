@@ -6,7 +6,7 @@
 /*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 14:07:43 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/06 14:16:43 by sangwoki         ###   ########.fr       */
+/*   Updated: 2023/08/27 16:35:04 by sangwoki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,15 @@ t_color	get_color(char *buffer)
 	while (line[i])
 	{
 		nbr[i] = ft_atol(line[i]);
+		if (!(0 <= nbr[i] && nbr[i] <= 255))
+			put_error("out of color range");
 		i++;
 	}
 	free_split(line);
 	return (new_color(nbr[RED] * 1.0, nbr[GREEN] * 1.0, nbr[BLUE] * 1.0));
 }
 
-t_vector	get_vector(char *buffer)
+t_vector	get_vector(char *buffer, int is_normalize)
 {
 	char	**line;
 	double	nbr[3];
@@ -99,6 +101,8 @@ t_vector	get_vector(char *buffer)
 	while (line[i])
 	{
 		nbr[i] = ft_atol(line[i]);
+		if (! (-1 <= nbr[i] && nbr[i] <= 1) && is_normalize)
+			put_error("out of normalized vector range");
 		i++;
 	}
 	free_split(line);

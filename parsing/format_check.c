@@ -6,7 +6,7 @@
 /*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 17:00:26 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/06 14:24:39 by sangwoki         ###   ########.fr       */
+/*   Updated: 2023/08/27 16:16:40 by sangwoki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,55 +21,41 @@ void	parameter_init(t_count *element)
 	element->cylinder = 0;
 }
 
-void	parameter_format(char *line, t_count *element, char *mode)
+void	parameter_format(char **line, char *mode)
 {
-	char	**feature;
 	int		length;
-	int		error;
 
-	feature = ft_split(line, ' ');
-	error = FALSE;
 	length = 0;
-	while (feature[length])
+	while (line[length])
 		length++;
 	if (*mode == 'A' && length != 3)
 		put_error("paramater_format A");
-	if (*mode == 'C' && length != 4)
-		put_error("paramater_format A");
-	if (*mode == 'L' && length != 4)
-		put_error("paramater_format A");
-	if (ft_strncmp(mode, "pl", 2) == 0 && length != 4)
-		put_error("paramater_format A");
-	if (ft_strncmp(mode, "sp", 2) == 0 && length != 4)
-		put_error("paramater_format A");
-	if (ft_strncmp(mode, "cy", 2) == 0 && length != 6)
-		put_error("paramater_format A");
-	free_split(feature);
+	else if (*mode == 'C' && length != 4)
+		put_error("paramater_format C");
+	else if (*mode == 'L' && length != 4)
+		put_error("paramater_format L");
+	else if (ft_strncmp(mode, "pl", 2) == 0 && length != 4)
+		put_error("paramater_format pl");
+	else if (ft_strncmp(mode, "sp", 2) == 0 && length != 4)
+		put_error("paramater_format sp");
+	else if (ft_strncmp(mode, "cy", 2) == 0 && length != 6)
+		put_error("paramater_format cy");
 }
 
-void	parameter_count(char **buffer, t_count *element)
+void	parameter_count(char *buffer, t_count *element)
 {
-	int		i;
-
-	i = 0;
-	while (buffer[i])
-	{
-		if (ft_strncmp(buffer[i], "A", 1) == 0)
-			element->ambient++;
-		else if (ft_strncmp(buffer[i], "C", 1) == 0)
-			element->camera++;
-		else if (ft_strncmp(buffer[i], "L", 1) == 0)
-			element->light++;
-		else if (ft_strncmp(buffer[i], "pl", 2) == 0)
-			element->plane++;
-		else if (ft_strncmp(buffer[i], "sp", 2) == 0)
-			element->sphere++;
-		else if (ft_strncmp(buffer[i], "cy", 2) == 0)
-			element->cylinder++;
-		else
-			put_error("paramater_count wrong mode");
-		parameter_format(buffer[i], element, buffer[i]);
-		i++;
-	}
-	free_split(buffer);
+	if (ft_strncmp(buffer, "A", 1) == 0 && ft_strlen(buffer) == 1)
+		element->ambient++;
+	else if (ft_strncmp(buffer, "C", 1) == 0 && ft_strlen(buffer) == 1)
+		element->camera++;
+	else if (ft_strncmp(buffer, "L", 1) == 0 && ft_strlen(buffer) == 1)
+		element->light++;
+	else if (ft_strncmp(buffer, "pl", 2) == 0 && ft_strlen(buffer) == 2)
+		element->plane++;
+	else if (ft_strncmp(buffer, "sp", 2) == 0 && ft_strlen(buffer) == 2)
+		element->sphere++;
+	else if (ft_strncmp(buffer, "cy", 2) == 0 && ft_strlen(buffer) == 2)
+		element->cylinder++;
+	else
+		put_error("paramater_count wrong mode");
 }
