@@ -19,6 +19,8 @@ t_color get_color_of_point(t_light light, t_hit_record record, t_ray ray) {
 
 	t_vector view_dv;
 	t_vector reflect_dv;
+	double ksn = 64;
+	double ks = 0.5;
 	view_dv = unit(scalar_multiply(ray.dv, -1));
 	reflect_dv = reflect_vector(scalar_multiply(to_light, -1), record.normal);//주의
 	
