@@ -13,3 +13,9 @@ void print_vector(t_vector vector)
 {
     printf("%f %f %f\n", vector.x, vector.y, vector.z);
 }
+
+
+t_vector    reflect_vector(t_vector vector, t_vector normal)
+{
+    return minus_vector(scalar_multiply(normal, inner_product(vector, normal)), vector);
+}

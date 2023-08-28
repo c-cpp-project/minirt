@@ -37,6 +37,8 @@ void        print_vector(t_vector vector);
 t_color     new_color(double r, double g, double b);
 t_color     plus_color(t_color color1, t_color color2);
 t_color     multiply_color(t_color color, double t);
+t_color     multiply_light(t_color color1, t_color color2);
+void     print_color(t_color color);
 
 double degrees_to_radians(double degree);
 
@@ -44,8 +46,14 @@ double positive_min_root_one_degree(double b, double c);
 double positive_min_root_two_degree(double a, double b, double c);
 
 double  min_2(double num1, double num2);
-double positive_min_2(double num1, double num2);
+double  max_2(double num1, double num2);
+double  positive_min_2(double num1, double num2);
+t_color color_min(t_color target, t_color compared);
 
 //random
 double random_double(double min_val, double max_val);
+t_vector random_vector_from_surface(t_vector normal);
+
+//reflect
+t_vector    reflect_vector(t_vector vector, t_vector normal);
 #endif

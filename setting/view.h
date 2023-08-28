@@ -6,11 +6,15 @@
 #define WIDTH 300
 #define HEIGHT 150
 
+#define EPSILON 1e-6
+#define LUMEN 3
+
 typedef	struct s_hit_record
 {
 	double	t;
 	t_vector	pos;
 	t_vector	normal;
+	t_color		object_color;
 }	t_hit_record;
 
 typedef struct s_eye
@@ -47,5 +51,7 @@ int current_min(double target, double compared, double t_min, double t_max);
 
 //cylinder 설정
 void add_top_and_bottom_vector(t_cylinder *cylinder);
+//phone lighting
+t_color	phong_ligthing(t_scene scene, t_count counts, t_hit_record record);
 
 #endif

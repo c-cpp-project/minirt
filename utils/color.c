@@ -22,3 +22,16 @@ t_color multiply_color(t_color color, double t) {
     color.b *= t;
     return (color);
 }
+
+t_color multiply_light(t_color color1, t_color color2)
+{
+    color1.r *= color2.r;
+    color1.g *= color2.g;
+    color1.b *= color2.b;
+    return (color1);
+}
+
+void print_color(t_color color)
+{
+    printf("%f %f %f\n", color.r, color.g, color.b);
+}

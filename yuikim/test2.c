@@ -4,21 +4,15 @@ t_color ray_color(t_ray ray, t_scene scene, t_count count)
 {
 	
     // t_hit_record record = hit_cylinder(scene.cl[1], ray);
-    // printf("cy : %f %f\n",scene.cl[0].radius, scene.cl[0].height);
-    // print_vector(scene.cl[0].center);
-    // print_vector(scene.cl[0].bottom);
-    // print_vector(scene.cl[0].top);
-    // print_vector(scene.cl[0].dv);
-    // print_vector(ray.dv);
-    // print_vector(ray.origin);
-    
 	t_hit_record record = hit_world(scene, count, ray, 0, INF);
     // printf("test : %d\n", count.cylinder);
 	double t = record.t;
 	if (t > 0.0) {
-		// printf("test: %f\n", t);
+		// printf("test: %f\n", t);        
 		t_vector vector_n = unit(minus_vector(ray_at(&ray, t), scene.cl[0].center));
+        t_vector direction = random_vector_from_surface(record.normal);
 		//return multiply_color(new_color(vector_n.x + 1, vector_n.y + 1, vector_n.z + 1), 0.5);
+        return phong_ligthing(scene, count, record);
         return multiply_color(new_color(record.normal.x * 0.5 + 1, record.normal.y * 0.5 + 1, record.normal.z * 0.5 + 1), 0.5);
 	}
 
@@ -41,28 +35,50 @@ int main() {
     counts.sphere = 2;
     counts.cylinder = 3;
     counts.plane = 1;
+    counts.light = 1;
+    counts.ambient = 1;
     scene.cl = malloc(sizeof(t_cylinder) * counts.cylinder);
     scene.sp = malloc(sizeof(t_sphere) * counts.sphere);
     scene.pl = malloc(sizeof(t_plane) * counts.plane);
+    scene.a = malloc(sizeof(t_ambient) * counts.ambient);
+    scene.l = malloc(sizeof(t_light) * counts.light);
+    
 
     for (int i = 0 ; i < counts.cylinder; i++) {
         scene.cl[i].center = new_vector(0, 0 - 1.0 * (double) i, -2);
         scene.cl[i].radius = 0.3;
         scene.cl[i].height = 1.0;
         scene.cl[i].dv = unit(new_vector(1, -1.1, 0));
+        scene.cl[i].color = new_color(1.0, 0.0, 0.0);
+        // printf("check!");
+        // print_color(scene.cl[i].color);
         add_top_and_bottom_vector(&scene.cl[i]);
     }
 
     for (int i = 0; i < counts.sphere; i++) {
         scene.sp[i].center = new_vector(- 1.0 * (double) i, 0, -2);
+        scene.sp[i].color = new_color(0.0, 1.0, 0.0);
         scene.sp[i].radius = 0.5;
     }
 
     for (int i = 0; i < counts.plane; i++) {
         scene.pl[i].dv = new_vector(0 ,1, 0);
         scene.pl[i].point = new_vector(0, -1, -2);
+        scene.pl[i].color = new_color(0.0, 0.0, 1.0);
     }
 
+    for (int i = 0; i < counts.light; i++) {
+        scene.l[i].position = new_vector(0 + (0.1) * i, 0.3, 0);
+        scene.l[i].color = new_color(1, 1, 1);
+        scene.l[i].ratio = 0.6;
+    }
+
+    for (int i = 0; i < counts.ambient; i++) {
+        scene.a[i].color = new_color(1, 1, 1);
+        scene.a[i].ratio = 0.05;
+        scene.a[i].color = multiply_color(scene.a[i].color, scene.a[i].ratio);
+        
+    }
     double aspect_ratio = 16.0 / 9.0;
 	int	image_width = 400;
 	int	image_height = (int) image_width / aspect_ratio;
