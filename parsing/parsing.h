@@ -35,6 +35,9 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 t_color		get_color(char *buffer);
 t_vector	get_vector(char *buffer, int is_normalize);
 
+// utility2.c
+void		free_scene(t_scene *scene);
+
 // parsing.c
 char		*write_buffer(int fd);
 t_scene		*parsing(const char *path, t_count *element);

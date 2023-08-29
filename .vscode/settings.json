@@ -2,6 +2,8 @@
 	"files.associations": {
 		"view.h": "c",
 		"stdlib.h": "c",
-		"__node_handle": "c"
+		"__node_handle": "c",
+		"math.h": "c",
+		"structure.h": "c"
 	}
 }

@@ -42,7 +42,7 @@ void	__init__(t_data *data, t_camera cam, char *argv[], int argc)
 
 	aspect_ratio = 16.0 / 9.0;
 	data->image.image_width = 400;
-	if (argc == 4)
+	if (argc == 5)
 	{
 		aspect_ratio = ft_atoi(argv[WIDTH_RATIO]) / ft_atoi(argv[HEIGHT_RATIO]);
 		data->image.image_width = ft_atoi(argv[WIDTH_IDX]);

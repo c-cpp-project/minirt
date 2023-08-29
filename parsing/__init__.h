@@ -9,9 +9,9 @@
 # define X 0
 # define Y 1
 # define Z 2
-# define WIDTH_IDX 1
-# define WIDTH_RATIO 2
-# define HEIGHT_RATIO 3
+# define WIDTH_IDX 2
+# define WIDTH_RATIO 3
+# define HEIGHT_RATIO 4
 
 # include"../structure.h"
 # include"../utils/utils.h"
@@ -52,4 +52,7 @@ typedef struct s_data
 }	t_data;
 
 int		ft_atoi(const char *str);
+void	set_coordinate(t_camera cam, t_co *co);
+void	set_viewport(t_camera cam, t_view *view, t_co *co, t_image *img);
+void	__init__(t_data *data, t_camera cam, char *argv[], int argc);
 #endif
