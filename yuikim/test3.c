@@ -5,6 +5,7 @@ void write_color(t_color color) {
 }
 
 int main() {
+    t_ray_info ray_info;
     t_scene scene;
     t_count counts;
     scene.pl = NULL;
@@ -55,6 +56,9 @@ int main() {
         scene.a[i].color = multiply_color(scene.a[i].color, scene.a[i].ratio);
         
     }
+    ray_info.count = counts;
+    ray_info.scene = scene;
+
     double aspect_ratio = 16.0 / 9.0;
 	int	image_width = 400;
 	int	image_height = (int) image_width / aspect_ratio;
@@ -80,7 +84,7 @@ int main() {
             u = (double)i / (image_width - 1);
             v = (double)j / (image_height - 1);
 			t_ray r = get_ray(scalar_multiply(horizontal, u), scalar_multiply(vertical, v), origin, left_bottom);
-			t_color color = ray_color(r, scene, counts);
+			t_color color = ray_color(ray_info, r);
 			write_color(color);
             ++i;
         }

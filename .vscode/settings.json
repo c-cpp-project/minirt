@@ -3,6 +3,7 @@
 		"view.h": "c",
 		"stdlib.h": "c",
 		"__node_handle": "c",
-		"utils.h": "c"
+		"utils.h": "c",
+		"parsing.h": "c"
 	}
 }
