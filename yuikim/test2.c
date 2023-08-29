@@ -12,7 +12,7 @@ t_color ray_color(t_ray ray, t_scene scene, t_count count)
 		t_vector vector_n = unit(minus_vector(ray_at(&ray, t), scene.cl[0].center));
         t_vector direction = random_vector_from_surface(record.normal);
 		//return multiply_color(new_color(vector_n.x + 1, vector_n.y + 1, vector_n.z + 1), 0.5);
-        return phong_ligthing(scene, count, record);
+        return phong_ligthing(scene, count, record, ray);
         return multiply_color(new_color(record.normal.x * 0.5 + 1, record.normal.y * 0.5 + 1, record.normal.z * 0.5 + 1), 0.5);
 	}
 
@@ -58,19 +58,20 @@ int main() {
     for (int i = 0; i < counts.sphere; i++) {
         scene.sp[i].center = new_vector(- 1.0 * (double) i, 0, -2);
         scene.sp[i].color = new_color(0.0, 1.0, 0.0);
-        scene.sp[i].radius = 0.5;
+        scene.sp[i].radius = 0.5 - 0.2 * i;
     }
 
     for (int i = 0; i < counts.plane; i++) {
         scene.pl[i].dv = new_vector(0 ,1, 0);
         scene.pl[i].point = new_vector(0, -1, -2);
-        scene.pl[i].color = new_color(0.0, 0.0, 1.0);
+        scene.pl[i].color = new_color(0.5, 1.0, 1.0);
     }
 
     for (int i = 0; i < counts.light; i++) {
-        scene.l[i].position = new_vector(0 + (0.1) * i, 0.3, 0);
+        scene.l[i].position = new_vector(0.1 + (0.1) * i, 6.0, 0);
         scene.l[i].color = new_color(1, 1, 1);
         scene.l[i].ratio = 0.6;
+        scene.l[i].color = multiply_color(scene.l[i].color, scene.l[i].ratio);
     }
 
     for (int i = 0; i < counts.ambient; i++) {

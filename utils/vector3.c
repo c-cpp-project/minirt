@@ -17,5 +17,5 @@ void print_vector(t_vector vector)
 
 t_vector    reflect_vector(t_vector vector, t_vector normal)
 {
-    return minus_vector(scalar_multiply(normal, inner_product(vector, normal)), vector);
+    return minus_vector(scalar_multiply(normal, inner_product(vector, normal) * 2), vector);
 }

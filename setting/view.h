@@ -52,6 +52,6 @@ int current_min(double target, double compared, double t_min, double t_max);
 //cylinder 설정
 void add_top_and_bottom_vector(t_cylinder *cylinder);
 //phone lighting
-t_color	phong_ligthing(t_scene scene, t_count counts, t_hit_record record);
+t_color phong_ligthing(t_scene scene, t_count counts, t_hit_record record, t_ray ray);
 
 #endif
