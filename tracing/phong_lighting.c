@@ -36,8 +36,6 @@ t_color get_color_of_point(t_light light, t_hit_record record, t_ray object_ray,
 	reflect_dv = reflect_vector(scalar_multiply(to_light, 1), record.normal);//주의
 	double spec = pow(max_2(inner_product(view_dv, reflect_dv), 0.0), ksn);
 	t_color specular = multiply_color(multiply_color(light.color, ks), spec);
-
-	//return (diffuse);
 	return plus_color(diffuse, specular);
 }
 
