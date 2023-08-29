@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/05 13:28:54 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/27 16:17:11 by sangwoki         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include"parsing.h"
 #define BUFFER_SIZE 32
@@ -40,21 +30,14 @@ char	*write_buffer(int fd)
 	return (dest);
 }
 
-void	put_error(char *msg)
-{
-	write(2, "Error\n", ft_strlen("Error\n"));
-	write(2, msg, ft_strlen(msg));
-	exit(1);
-}
-
 t_scene	*parsing(const char *path, t_count *element)
 {
 	int		fd;
 	char	*src;
 
 	fd = open(path, O_RDONLY);
-	if (fd == -1)
-		exit(0);
+	if (fd == -1 || ft_strncmp(&path[ft_strlen(path) - 3], ".rt", 3))
+		exit(1);
 	src = write_buffer(fd);
 	return (assign_scene(src, element));
 }

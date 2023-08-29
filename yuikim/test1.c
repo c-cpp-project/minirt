@@ -4,16 +4,33 @@ t_color ray_color(t_ray ray)
 {
 	//선언부
 	double t;
+	double t1;
 	t_sphere sp;
 	sp.center = new_vector(0, 0, -1);
 	sp.radius = 0.5;
-	t = hit_sphere(sp, ray);
+	// t = hit_sphere(sp, ray);
+	// if (t > 0.0) {
+	// 	t_vector vector_n = unit(minus_vector(ray_at(&ray, t), new_vector(0, 0, -1)));
+	// 	return multiply_color(new_color(vector_n.x + 1, vector_n.y + 1, vector_n.z + 1), 0.5);
+	// }
+	// print_vector(ray.dv);
+    // print_vector(ray.origin);
+	t_cylinder cy;
+	cy.center = new_vector(0, 0, -1);
+	cy.radius = 0.5;
+	cy.height = 1.0;
+	cy.dv = unit(new_vector(1, 0, 0));
+	add_top_and_bottom_vector(&cy);
+	t_hit_record record = hit_cylinder(cy, ray);
+	t= record.t;
 	if (t > 0.0) {
-		printf("%f", t);
+		// printf("test: %f\n", t);
 		t_vector vector_n = unit(minus_vector(ray_at(&ray, t), new_vector(0, 0, -1)));
-		return multiply_color(new_color(vector_n.x + 1, vector_n.y + 1, vector_n.z + 1), 0.5);
+		return multiply_color(new_color(0.5 * vector_n.x + 0.5, 0.5 * vector_n.y + 0.5, 0.5 * vector_n.z + 0.5), 0.5);
 	}
-	//default 배경
+
+
+	// default 배경
 	t_vector direction = ray.dv;
 	t = 0.5 * (direction.y + 1.0);
 	return plus_color(multiply_color(new_color(1.0, 1.0, 1.0), 1.0  - t), multiply_color(new_color(0.0, 0.0, 0.0), t));
@@ -53,7 +70,7 @@ int main()
             // printf("%d %d %d\n", (int)(255.999 * r), (int)(255.999 * g), (int)(255.999 * b));
 			// print_vector(scalar_multiply(horizontal, v));
 			t_color color = ray_color(r);
-			write_color(ray_color(r));
+			write_color(color);
             ++i;
         }
         --j;
