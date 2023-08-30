@@ -21,7 +21,7 @@ t_ambient	*extract_ambient(char **buffer, t_count *element)
 			node[idx].ratio = ft_atol(value[1]);
 			if (! (0 <= node[idx].ratio && node[idx].ratio <= 1))
 				put_error("out of lighting ratio range");
-			node[idx].color = get_color(value[2]);
+			node[idx].color = new_color(1, 1, 1);
 			free_split(value);
 			idx++;
 		}

@@ -12,6 +12,7 @@
 # define Z 2
 
 # include"../structure.h"
+# include"../utils/utils.h"
 # include<unistd.h>
 # include<stdio.h>
 # include<fcntl.h>
