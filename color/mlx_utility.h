@@ -6,7 +6,7 @@
 /*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 16:00:48 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/30 19:22:36 by sangwoki         ###   ########.fr       */
+/*   Updated: 2023/08/30 21:41:18 by sangwoki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ typedef struct s_mlx
 
 // mlx_color.c
 int		create_trgb(int t, int r, int g, int b);
-void	mlx_set_window(void **mlx_ptr, void **win_ptr, t_img_ptr *wins, \
-t_image *img);
+void	mlx_set_window(t_mlx *mlx_vars, t_image *img);
 void	my_mlx_pixel_put(t_img_ptr *data, int x, int y, t_color rgb);
+int		key_code_press(int keycode, t_mlx *vars);
 
 // mlx_color.c
 int		get_t(int trgb);

@@ -6,9 +6,11 @@
 /*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 13:22:59 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/28 13:23:47 by sangwoki         ###   ########.fr       */
+/*   Updated: 2023/08/30 21:58:55 by sangwoki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include"mlx_utility.h"
 
 int	create_trgb(int t, int r, int g, int b)
 {

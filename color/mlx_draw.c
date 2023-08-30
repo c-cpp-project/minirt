@@ -32,5 +32,7 @@ void	ft_draw(t_ray_info ray_info, t_data data, t_mlx mlx_vars)
 			my_mlx_pixel_put(&(mlx_vars.wins), i, j, color);
 			i++;
 		}
+		printf("\n");
+		j--;
 	}
 }

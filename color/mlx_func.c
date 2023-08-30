@@ -11,16 +11,26 @@ void	my_mlx_pixel_put(t_img_ptr *data, int x, int y, t_color rgb)
 	*(unsigned int *)dst = color;
 }
 
-void	mlx_set_window(void **mlx_ptr, void **win_ptr, t_img_ptr *wins, \
-t_image *img)
+void	mlx_set_window(t_mlx *mlx_vars, t_image *img)
 {
-	(*mlx_ptr) = mlx_init();
-	(*win_ptr) = mlx_new_window((*mlx_ptr), img->image_width, \
+	mlx_vars->mlx_ptr = mlx_init();
+	mlx_vars->win_ptr = mlx_new_window(mlx_vars->mlx_ptr, img->image_width, \
 	img->image_height, "MINIRT");
-	wins->img = mlx_new_image((*mlx_ptr), img->image_width, \
+	mlx_vars->wins.img = mlx_new_image(mlx_vars->mlx_ptr, img->image_width, \
 	img->image_height);
-	wins->addr = mlx_get_data_addr(wins->img, &(wins->bits_per_pixel), \
-	&(wins->line_length), &(wins->endian));
+	mlx_vars->wins.addr = mlx_get_data_addr(mlx_vars->wins.img, \
+	&(mlx_vars->wins.bits_per_pixel), &(mlx_vars->wins.line_length), \
+	&(mlx_vars->wins.endian));
+}
+
+int	key_code_press(int keycode, t_mlx *vars)
+{
+	if (keycode == 53)
+	{
+		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
+		exit(0);
+	}
+	return (0);
 }
 
 // int main()

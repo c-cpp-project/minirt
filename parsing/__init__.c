@@ -31,8 +31,8 @@ void	set_viewport(t_camera cam, t_view *view, t_co *co, t_image *img)
 	(img->image_width / img->image_height);
 	viewport_h = scalar_multiply(co->horizontal, view->viewport_height);
 	viewport_v = scalar_multiply(co->vertical, view->viewport_width);
-	view->left_bottom = \
-	getleft_bottom(co->origin, viewport_h, viewport_v, cam.dv);
+	view->left_bottom = getleft_bottom(co->origin, \
+	viewport_h, viewport_v, cam.dv);
 }
 
 // vup is just view up about camera

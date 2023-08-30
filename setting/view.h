@@ -37,5 +37,6 @@ int				current_min(double target, double compared,
 t_color			phong_ligthing(t_ray_info ray_info,
 					t_hit_record record, t_ray ray);
 t_color			ray_color(t_ray_info ray_info, t_ray ray);
-
+t_vector		getleft_bottom(t_vector origin, t_vector horizontal, \
+t_vector vertical, t_vector focal_len_vector);
 #endif
