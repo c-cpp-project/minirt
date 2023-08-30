@@ -6,7 +6,7 @@
 #    By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/30 11:48:36 by sangwoki          #+#    #+#              #
-#    Updated: 2023/08/28 13:22:18 by sangwoki         ###   ########.fr        #
+#    Updated: 2023/08/30 16:07:30 by sangwoki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,18 @@ LIBFT = ./libft/libft.a
 SRCS = 	
 
 OBJS = $(SRCS:.c=.o)
-INCS = ./interface.h \
-		./parsing/parsing.h \
-		./signal/signal.h \
-		./execute/execute.h
+INCS = ./color/mlx_color.c \
+		./color/mlx_func.C \
+		./parsing/__init__.c \
+		./parsing/error_handle.c \
+		./parsing/extract.c \
+		./parsing/extract2.c \
+		./parsing/format_check.c \
+		./parsing/ft_math,c \
+		./parsing/ft_split_group.c \
+		./parsing/ft_split.c \
+		./parsing/uti
+
 
 all : $(NAME)
 $(NAME) : $(OBJS)
