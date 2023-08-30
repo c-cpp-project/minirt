@@ -6,7 +6,7 @@
 /*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 16:00:48 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/29 19:17:21 by sangwoki         ###   ########.fr       */
+/*   Updated: 2023/08/30 19:22:36 by sangwoki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 # include"../structure.h"
 # include"../parsing/__init__.h"
+# include "../utils/utils.h"
 # include<unistd.h>
 # include<stdio.h>
 # include<fcntl.h>
@@ -50,9 +51,15 @@ typedef struct s_mlx
 int		create_trgb(int t, int r, int g, int b);
 void	mlx_set_window(void **mlx_ptr, void **win_ptr, t_img_ptr *wins, \
 t_image *img);
+void	my_mlx_pixel_put(t_img_ptr *data, int x, int y, t_color rgb);
+
+// mlx_color.c
 int		get_t(int trgb);
 int		get_r(int trgb);
 int		get_g(int trgb);
 int		get_b(int trgb);
 
+// mlx_draw.c
+t_color	ray2color(t_ray_info ray_info, t_data data, double u, double v);
+void	ft_draw(t_ray_info ray_info, t_data data, t_mlx mlx_vars);
 #endif

@@ -14,7 +14,6 @@ t_ray	get_ray(t_vector u_horizontal, t_vector v_vertical,
 t_vector	getleft_bottom(t_vector origin, t_vector horizontal,
 	t_vector vertical, t_vector focal_len_vector)
 {
-	t_vector	result;
 
 	return (minus_vector(
 			minus_vector(minus_vector(origin, scalar_multiply(horizontal, 0.5)),

@@ -80,4 +80,5 @@ t_plane		*extract_plane(char **buffer, t_count *element);
 
 // extract2.c
 t_cylinder	*extract_cylinder(char **buffer, t_count *element);
+void		add_top_and_bottom_vector(t_cylinder *cylinder);
 #endif

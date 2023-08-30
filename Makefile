@@ -6,39 +6,62 @@
 #    By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/30 11:48:36 by sangwoki          #+#    #+#              #
-#    Updated: 2023/08/30 16:07:30 by sangwoki         ###   ########.fr        #
+#    Updated: 2023/08/30 19:23:03 by sangwoki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = gcc -Wextra -Werror -Wall -Lmlx -lmlx -framework OpenGL -framework \
-Appkit $(SRCS) -o $(NAME)
-NAME = miniRT
-LIBFT = ./libft/libft.a
-SRCS = 	
+CFLAGS = -Wextra -Werror -Wall
+LINKING_FLAGS = -Lmlx -lmlx -framework OpenGL -framework Appkit
 
-OBJS = $(SRCS:.c=.o)
-INCS = ./color/mlx_color.c \
-		./color/mlx_func.C \
+NAME = miniRT
+SRCS = ./color/mlx_color.c \
+		./color/mlx_func.c \
+		./color/mlx_draw.c \
 		./parsing/__init__.c \
 		./parsing/error_handle.c \
 		./parsing/extract.c \
 		./parsing/extract2.c \
 		./parsing/format_check.c \
-		./parsing/ft_math,c \
+		./parsing/ft_math.c \
 		./parsing/ft_split_group.c \
 		./parsing/ft_split.c \
-		./parsing/uti
+		./parsing/utility.c \
+		./parsing/utility2.c \
+		./parsing/cylinder.c \
+		./parsing/parsing.c \
+		./setting/check_hit.c \
+		./setting/check_world_hit.c \
+		./setting/view.c \
+		./utils/color.c \
+		./utils/equation.c \
+		./utils/geometry.c \
+		./utils/max_func.c \
+		./utils/min_func.c \
+		./utils/random.c \
+		./utils/ray.c \
+		./utils/vector_random.c \
+		./utils/vector.c \
+		./utils/vector2.c \
+		./utils/vector3.c \
+		main.c \
 
+OBJS = $(SRCS:.c=.o)
+INCS = ./color/mlx_utility.h \
+		./parsing/__init__.h \
+		./parsing/parsing.h \
+		./setting/view.h \
+		./utils/ray.h \
+		./utils/utils.h
 
 all : $(NAME)
 $(NAME) : $(OBJS)
-	make -C ./libft all
-	$(CC) $(CFLAGS) $(LINKING_FLAGS) $^ $(LIBFT) -o $@
+	make -C mlx all
+	$(CC) $(CFLAGS) $^ $(LINKING_FLAGS) -o $@
 %.o : %.c
-	$(CC) $(CFLAGS) $(COMPILE_FLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 clean :
-	make -C ./libft fclean
+	make -C mlx clean
 	rm -f $(OBJS)
 fclean : clean
 	rm -f $(NAME)

@@ -1,4 +1,4 @@
-#include "view.h"
+#include "parsing.h"
 
 void	add_top_and_bottom_vector(t_cylinder *cylinder)
 {
