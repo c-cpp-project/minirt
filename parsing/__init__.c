@@ -13,6 +13,9 @@ void	set_coordinate(t_camera cam, t_co *co)
 		lookup = new_vector(0, 0, 1);
 	co->horizontal = unit(cross_product(lookup, cam.dv));
 	co->vertical = unit(cross_product(cam.dv, co->horizontal));
+	print_vector(co->horizontal);
+	print_vector(co->vertical);
+	printf("horizaontal, vertical\n");
 }
 
 void	set_viewport(t_camera cam, t_view *view, t_co *co, t_image *img)
@@ -25,14 +28,15 @@ void	set_viewport(t_camera cam, t_view *view, t_co *co, t_image *img)
 
 	theta = degrees_to_radians(cam.fov);
 	h = tan(theta / 2);
-	focal_length = 1;
+	focal_length = 1.0;
 	view->viewport_height = 2 * h * focal_length;
-	view->viewport_width = view->viewport_height * \
-	(img->image_width / img->image_height);
+	view->viewport_width = img->aspect_ratio * view->viewport_height;
 	viewport_h = scalar_multiply(co->horizontal, view->viewport_height);
 	viewport_v = scalar_multiply(co->vertical, view->viewport_width);
 	view->left_bottom = getleft_bottom(co->origin, \
 	viewport_h, viewport_v, cam.dv);
+	print_vector(view->left_bottom);
+	printf("left_bottom");
 }
 
 // vup is just view up about camera
@@ -47,7 +51,7 @@ void	__init__(t_data *data, t_camera cam, char *argv[], int argc)
 		aspect_ratio = ft_atoi(argv[WIDTH_RATIO]) / ft_atoi(argv[HEIGHT_RATIO]);
 		data->image.image_width = ft_atoi(argv[WIDTH_IDX]);
 	}
-	data->image.image_height = data->image.image_width * aspect_ratio;
+	data->image.image_height = (int) data->image.image_width / aspect_ratio;
 	data->image.aspect_ratio = aspect_ratio;
 	set_coordinate(cam, &(data->co));
 	set_viewport(cam, &(data->view), &(data->co), &(data->image));

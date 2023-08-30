@@ -33,13 +33,11 @@ t_vector	unit(t_vector vector)
 	double	length;
 
 	length = len(vector);
-	// if (length == 0)
-	// {
-	// 	printf("Error\n:Devider is 0");
-	// 	exit(0);
-	// }
 	if (length == 0)
-		return (vector);
+	{
+		printf("Error\n:Devider is 0");
+		exit(0);
+	}
 	vector.x /= length;
 	vector.y /= length;
 	vector.z /= length;

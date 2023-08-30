@@ -24,8 +24,8 @@
 
 typedef struct s_image
 {
-	double	image_width;
-	double	image_height;
+	int		image_width;
+	int		image_height;
 	double	aspect_ratio;
 }	t_image;
 

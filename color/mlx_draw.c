@@ -26,13 +26,12 @@ void	ft_draw(t_ray_info ray_info, t_data data, t_mlx mlx_vars)
 		i = 0;
 		while (i < data.image.image_width)
 		{
-			u = (double)i / (data.image.image_height - 1);
+			u = (double)i / (data.image.image_width - 1);
 			v = (double)j / (data.image.image_height - 1);
 			color = ray2color(ray_info, data, u, v);
 			my_mlx_pixel_put(&(mlx_vars.wins), i, j, color);
 			i++;
 		}
-		printf("\n");
 		j--;
 	}
 }
