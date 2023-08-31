@@ -14,13 +14,16 @@ t_hit_record	hit_cylinder(t_cylinder cylinder, t_ray ray)
 	record.object_color = cylinder.color;
 	if (t == t3)
 	{
-		record.normal = unit(minus_vector(record.pos, plus_vector(cylinder.center, scalar_multiply(cylinder.dv, 
-		inner_product(minus_vector(record.pos, cylinder.center), cylinder.dv)))));
+		t_vector vector = minus_vector(record.pos, cylinder.center);
+		// t_vector vector2 = scalar_multiply(cylinder.dv, inner_product(vector, cylinder.dv));
+		record.normal = unit(minus_vector(vector, new_vector(0, 0, 0)));
+		// record.normal = unit(minus_vector(record.pos, plus_vector(cylinder.center, scalar_multiply(cylinder.dv, 
+		// inner_product(minus_vector(record.pos, cylinder.center), cylinder.dv)))));
 	}
-	if (inner_product(record.pos, record.normal) < 0)
-		;
+	if (t == t1)
+		record.normal = unit(minus_vector(cylinder.bottom, cylinder.center));
 	else
-		record.normal = scalar_multiply(record.normal, -1.0);
+		record.normal = unit(minus_vector(cylinder.top, cylinder.center));
 	return record;
 }
 

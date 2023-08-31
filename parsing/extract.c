@@ -46,8 +46,7 @@ t_camera	*extract_camera(char **buffer, t_count *element)
 		{
 			value = ft_split_group(buffer[i], TRUE);
 			node[idx].position = get_vector(value[1], FALSE);
-			node[idx].dv =  scalar_multiply(unit(get_vector(value[2], TRUE)), 1);
-			// node[idx].dv.y *= -1;
+			node[idx].dv =  scalar_multiply(unit(get_vector(value[2], TRUE)), -1);
 			node[idx].fov = ft_atol(value[3]);
 			if (! (0 <= node[idx].fov && node[idx].fov <= 180))
 				put_error("out of FOV range");
