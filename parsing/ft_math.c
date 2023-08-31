@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_math.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/05 18:04:45 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/06 15:35:41 by sangwoki         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include"parsing.h"
 
@@ -68,4 +58,29 @@ size_t	ft_strlen(const char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+int	ft_atoi(const char *str)
+{
+	int	result;
+	int	i;
+	int	sign;
+
+	i = 0;
+	result = 0;
+	sign = 1;
+	while (str[i] == ' ' || (9 <= str[i] && str[i] <= 13))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while ('0' <= str[i] && str[i] <= '9')
+	{
+		result = result * 10 + str[i] - '0';
+		i++;
+	}
+	return (sign * result);
 }

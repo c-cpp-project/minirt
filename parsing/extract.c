@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   extract.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/05 15:30:11 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/27 16:36:04 by sangwoki         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include"parsing.h"
 
@@ -17,7 +7,6 @@ t_ambient	*extract_ambient(char **buffer, t_count *element)
 	t_ambient	*node;
 	char		**value;
 	int			i;
-	int			j;
 	int			idx;
 
 	node = (t_ambient *)malloc(sizeof(t_ambient) * element->ambient);
@@ -31,7 +20,7 @@ t_ambient	*extract_ambient(char **buffer, t_count *element)
 			node[idx].ratio = ft_atol(value[1]);
 			if (! (0 <= node[idx].ratio && node[idx].ratio <= 1))
 				put_error("out of lighting ratio range");
-			node[idx].color = get_color(value[2]);
+			node[idx].color = new_color(1, 1, 1);
 			free_split(value);
 			idx++;
 		}
@@ -45,7 +34,6 @@ t_camera	*extract_camera(char **buffer, t_count *element)
 	t_camera	*node;
 	char		**value;
 	int			i;
-	int			j;
 	int			idx;
 
 	node = (t_camera *)malloc(sizeof(t_camera) * element->camera);
@@ -74,7 +62,6 @@ t_light	*extract_light(char **buffer, t_count *element)
 	t_light		*node;
 	char		**value;
 	int			i;
-	int			j;
 	int			idx;
 
 	node = (t_light *)malloc(sizeof(t_light) * element->light);
@@ -103,7 +90,6 @@ t_sphere	*extract_sphere(char **buffer, t_count *element)
 	t_sphere	*node;
 	char		**value;
 	int			i;
-	int			j;
 	int			idx;
 
 	node = (t_sphere *)malloc(sizeof(t_sphere) * element->sphere);
@@ -130,7 +116,6 @@ t_plane	*extract_plane(char **buffer, t_count *element)
 	t_plane		*node;
 	char		**value;
 	int			i;
-	int			j;
 	int			idx;
 
 	node = (t_plane *)malloc(sizeof(t_plane) * element->plane);

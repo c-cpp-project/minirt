@@ -24,8 +24,6 @@ typedef struct s_hit_record
 
 t_ray			get_ray(t_vector u_horizontal, t_vector v_vertical,
 					t_vector origin, t_vector left_bottom);
-t_vector		getleft_bottom(t_vector origin, t_vector horizontal,
-					t_vector vertical, t_vector focal_len_vector);
 t_hit_record	hit_sphere(t_sphere sphere, t_ray ray);
 t_hit_record	hit_cylinder(t_cylinder cylinder, t_ray ray);
 double			hit_cylinder_side(t_cylinder cylinder, t_ray ray);
@@ -36,9 +34,9 @@ t_hit_record	hit_world(t_ray_info ray_info, t_ray ray,
 					double t_min, double t_max);
 int				current_min(double target, double compared,
 					double t_min, double t_max);
-void			add_top_and_bottom_vector(t_cylinder *cylinder);
 t_color			phong_ligthing(t_ray_info ray_info,
 					t_hit_record record, t_ray ray);
 t_color			ray_color(t_ray_info ray_info, t_ray ray);
-
+t_vector		getleft_bottom(t_vector origin, t_vector horizontal, \
+t_vector vertical, t_vector focal_len_vector);
 #endif

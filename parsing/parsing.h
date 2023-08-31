@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/05 13:31:23 by sangwoki          #+#    #+#             */
-/*   Updated: 2023/08/27 16:35:31 by sangwoki         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #ifndef PARSING_H
 # define PARSING_H
@@ -22,6 +12,7 @@
 # define Z 2
 
 # include"../structure.h"
+# include"../utils/utils.h"
 # include<unistd.h>
 # include<stdio.h>
 # include<fcntl.h>
@@ -44,6 +35,9 @@ size_t		ft_strlcat(char *dest, const char *src, size_t size);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 t_color		get_color(char *buffer);
 t_vector	get_vector(char *buffer, int is_normalize);
+
+// utility2.c
+void		free_scene(t_scene *scene);
 
 // parsing.c
 char		*write_buffer(int fd);
@@ -86,4 +80,5 @@ t_plane		*extract_plane(char **buffer, t_count *element);
 
 // extract2.c
 t_cylinder	*extract_cylinder(char **buffer, t_count *element);
+void		add_top_and_bottom_vector(t_cylinder *cylinder);
 #endif
