@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "mlx_utility.h": "c",
+        "vector": "c",
+        "iosfwd": "c",
+        "iterator": "c"
+    }
+}

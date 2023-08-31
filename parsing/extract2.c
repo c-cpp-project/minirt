@@ -22,7 +22,7 @@ t_cylinder	*extract_cylinder(char **buffer, t_count *element)
 			node[idx].radius = ft_atol(value[3]) / 2;
 			node[idx].height = ft_atol(value[4]);
 			node[idx].color = get_color(value[5]);
-			add_top_and_bottom_vector(&node[i]);
+			add_top_and_bottom_vector(&node[idx]);
 			free_split(value);
 			idx++;
 		}

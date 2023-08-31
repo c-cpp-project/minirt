@@ -42,6 +42,8 @@ typedef struct s_view
 	double		viewport_width;
 	double		focal_length;
 	t_vector	left_bottom;
+	t_vector	viewport_h;
+	t_vector	viewport_v;
 }	t_view;
 
 typedef struct s_data
@@ -51,8 +53,9 @@ typedef struct s_data
 	t_view		view;
 }	t_data;
 
-int		ft_atoi(const char *str);
-void	set_coordinate(t_camera cam, t_co *co);
-void	set_viewport(t_camera cam, t_view *view, t_co *co, t_image *img);
-void	__init__(t_data *data, t_camera cam, char *argv[], int argc);
+int			ft_atoi(const char *str);
+void		set_coordinate(t_camera cam, t_co *co);
+void		set_viewport(t_camera cam, t_view *view, t_co *co, t_image *img);
+void		__init__(t_data *data, t_camera cam, char *argv[], int argc);
+t_vector	turn180vector(t_vector vector1);
 #endif

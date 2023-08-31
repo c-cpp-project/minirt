@@ -77,7 +77,8 @@ t_color	get_color(char *buffer)
 		i++;
 	}
 	free_split(line);
-	return (new_color(nbr[RED] * 1.0, nbr[GREEN] * 1.0, nbr[BLUE] * 1.0));
+	return (new_color(nbr[RED] / 255.999, \
+	nbr[GREEN] / 255.999, nbr[BLUE] / 255.999));
 }
 
 t_vector	get_vector(char *buffer, int is_normalize)

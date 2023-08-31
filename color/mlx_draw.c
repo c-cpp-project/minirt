@@ -2,14 +2,12 @@
 
 t_color	ray2color(t_ray_info ray_info, t_data data, double u, double v)
 {
-	t_ray	r;
-	t_color	color;
+	t_ray		r;
+	t_color		color;
 
-	r = get_ray(scalar_multiply(data.co.horizontal, u), \
-	scalar_multiply(data.co.vertical, v), \
+	r = get_ray(scalar_multiply(data.view.viewport_h, u), \
+	scalar_multiply(data.view.viewport_v, v), \
 	data.co.origin, data.view.left_bottom);
-	// print_vector(r.dv);
-	// print_vector(r.origin);
 	color = ray_color(ray_info, r);
 	return (color);
 }
