@@ -6,7 +6,7 @@ void	my_mlx_pixel_put(t_img_ptr *data, int x, int y, t_color rgb)
 	char	*dst;
 	int		color;
 
-	color = create_trgb(0, rgb.r, rgb.g, rgb.b);
+	color = create_trgb(0, rgb.r * 256, rgb.g * 256, rgb.b * 256);
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }

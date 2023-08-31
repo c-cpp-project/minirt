@@ -6,7 +6,7 @@
 #    By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/30 11:48:36 by sangwoki          #+#    #+#              #
-#    Updated: 2023/08/30 21:12:15 by sangwoki         ###   ########.fr        #
+#    Updated: 2023/08/31 12:38:29 by sangwoki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SRCS = ./color/mlx_color.c \
 		./utils/vector3.c \
 		./tracing/ray_color.c \
 		./tracing/phong_lighting.c \
-		main.c \
+		./main.c \
 
 OBJS = $(SRCS:.c=.o)
 INCS = ./color/mlx_utility.h \
