@@ -16,7 +16,7 @@ double	ft_decimal_part(const char *str)
 	}
 	if (str[i] != 0)
 		put_error("decimal error");
-	return (result / (10 ^ i));
+	return (result / pow(10, i));
 }
 
 double	ft_atol(const char *str)

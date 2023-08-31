@@ -20,7 +20,8 @@ t_ambient	*extract_ambient(char **buffer, t_count *element)
 			node[idx].ratio = ft_atol(value[1]);
 			if (! (0 <= node[idx].ratio && node[idx].ratio <= 1))
 				put_error("out of lighting ratio range");
-			node[idx].color = new_color(1, 1, 1);
+			node[idx].color = get_color(value[2]);
+			node[idx].color = multiply_color(node[idx].color, node[idx].ratio);
 			free_split(value);
 			idx++;
 		}
@@ -45,7 +46,8 @@ t_camera	*extract_camera(char **buffer, t_count *element)
 		{
 			value = ft_split_group(buffer[i], TRUE);
 			node[idx].position = get_vector(value[1], FALSE);
-			node[idx].dv = unit(get_vector(value[2], TRUE));
+			node[idx].dv =  scalar_multiply(unit(get_vector(value[2], TRUE)), 1);
+			// node[idx].dv.y *= -1;
 			node[idx].fov = ft_atol(value[3]);
 			if (! (0 <= node[idx].fov && node[idx].fov <= 180))
 				put_error("out of FOV range");
@@ -76,7 +78,8 @@ t_light	*extract_light(char **buffer, t_count *element)
 			node[idx].ratio = ft_atol(value[2]);
 			if (! (0 <= node[idx].ratio && node[idx].ratio <= 1))
 				put_error("out of light range");
-			node[idx].color = get_color(value[3]);
+			node[idx].color = new_color(1, 1, 1);
+			node[idx].color = multiply_color(node[idx].color, node[idx].ratio);
 			free_split(value);
 			idx++;
 		}

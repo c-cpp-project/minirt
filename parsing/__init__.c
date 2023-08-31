@@ -2,6 +2,16 @@
 
 #include"__init__.h"
 
+t_vector	turn180vector(t_vector vector1)
+{
+	t_vector	vector2;
+
+	vector2.x = -vector1.x;
+	vector2.y = -vector1.y;
+	vector2.z = -vector1.z;
+	return (vector2);
+}
+
 // lookup is vup
 void	set_coordinate(t_camera cam, t_co *co)
 {
@@ -13,9 +23,6 @@ void	set_coordinate(t_camera cam, t_co *co)
 		lookup = new_vector(0, 0, 1);
 	co->horizontal = unit(cross_product(lookup, cam.dv));
 	co->vertical = unit(cross_product(cam.dv, co->horizontal));
-	print_vector(co->horizontal);
-	print_vector(co->vertical);
-	printf("horizaontal, vertical\n");
 }
 
 void	set_viewport(t_camera cam, t_view *view, t_co *co, t_image *img)
@@ -31,12 +38,13 @@ void	set_viewport(t_camera cam, t_view *view, t_co *co, t_image *img)
 	focal_length = 1.0;
 	view->viewport_height = 2 * h * focal_length;
 	view->viewport_width = img->aspect_ratio * view->viewport_height;
-	viewport_h = scalar_multiply(co->horizontal, view->viewport_height);
-	viewport_v = scalar_multiply(co->vertical, view->viewport_width);
+	viewport_h = scalar_multiply(co->horizontal, view->viewport_width);
+	viewport_v = scalar_multiply(turn180vector(co->vertical), \
+	view->viewport_height);
 	view->left_bottom = getleft_bottom(co->origin, \
 	viewport_h, viewport_v, cam.dv);
-	print_vector(view->left_bottom);
-	printf("left_bottom");
+	view->viewport_h = viewport_h;
+	view->viewport_v = viewport_v;
 }
 
 // vup is just view up about camera
