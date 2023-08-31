@@ -72,6 +72,7 @@ int main() {
 	t_vector vertical = new_vector(0, viewport_height, 0);
 	t_vector left_bottom = getleft_bottom(origin, horizontal, vertical, new_vector(0, 0, focal_length));
 
+    // print_vector(left_bottom);
     printf("P3\n%d %d\n255\n", image_width, image_height);
 	int j, i;
 	double u, v;
@@ -84,6 +85,8 @@ int main() {
             u = (double)i / (image_width - 1);
             v = (double)j / (image_height - 1);
 			t_ray r = get_ray(scalar_multiply(horizontal, u), scalar_multiply(vertical, v), origin, left_bottom);
+            // print_vector(r.dv);
+            // print_vector(r.origin);
 			t_color color = ray_color(ray_info, r);
 			write_color(color);
             ++i;

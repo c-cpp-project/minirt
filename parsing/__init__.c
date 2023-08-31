@@ -27,16 +27,16 @@ void	set_viewport(t_camera cam, t_view *view, t_co *co, t_image *img)
 	t_vector	viewport_v;
 
 	theta = degrees_to_radians(cam.fov);
-	h = tan(theta / 2);
+	// h = tan(theta / 2);
+	h = 1.0;
 	focal_length = 1.0;
 	view->viewport_height = 2 * h * focal_length;
 	view->viewport_width = img->aspect_ratio * view->viewport_height;
-	viewport_h = scalar_multiply(co->horizontal, view->viewport_height);
-	viewport_v = scalar_multiply(co->vertical, view->viewport_width);
+	viewport_h = scalar_multiply(co->horizontal, view->viewport_width);
+	viewport_v = scalar_multiply(co->vertical, view->viewport_height);
 	view->left_bottom = getleft_bottom(co->origin, \
 	viewport_h, viewport_v, cam.dv);
-	print_vector(view->left_bottom);
-	printf("left_bottom");
+	print_vector(cam.dv);
 }
 
 // vup is just view up about camera
