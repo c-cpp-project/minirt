@@ -21,6 +21,7 @@ SRCS = ./color/mlx_color.c \
 		./parsing/cylinder.c \
 		./parsing/parsing.c \
 		./setting/check_hit.c \
+		./setting/check_hit2.c \
 		./setting/check_world_hit.c \
 		./setting/view.c \
 		./utils/color.c \
