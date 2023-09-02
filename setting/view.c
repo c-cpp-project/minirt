@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   view.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuikim <yuikim@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/02 13:39:23 by yuikim            #+#    #+#             */
+/*   Updated: 2023/09/02 13:59:53 by yuikim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "view.h"
 
 t_ray	get_ray(t_vector u_horizontal, t_vector v_vertical,
@@ -7,7 +19,6 @@ t_ray	get_ray(t_vector u_horizontal, t_vector v_vertical,
 
 	r = ray(origin, minus_vector(plus_vector(plus_vector(left_bottom,
 						u_horizontal), v_vertical), origin));
-
 	return (r);
 }
 

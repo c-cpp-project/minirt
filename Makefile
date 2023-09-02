@@ -21,6 +21,7 @@ SRCS = ./color/mlx_color.c \
 		./parsing/cylinder.c \
 		./parsing/parsing.c \
 		./setting/check_hit.c \
+		./setting/check_hit2.c \
 		./setting/check_world_hit.c \
 		./setting/view.c \
 		./utils/color.c \
@@ -28,9 +29,7 @@ SRCS = ./color/mlx_color.c \
 		./utils/geometry.c \
 		./utils/max_func.c \
 		./utils/min_func.c \
-		./utils/random.c \
 		./utils/ray.c \
-		./utils/vector_random.c \
 		./utils/vector.c \
 		./utils/vector2.c \
 		./utils/vector3.c \

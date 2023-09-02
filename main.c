@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuikim <yuikim@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/02 13:40:41 by yuikim            #+#    #+#             */
+/*   Updated: 2023/09/02 14:08:33 by yuikim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include "structure.h"
-# include "parsing/parsing.h"
-# include "parsing/__init__.h"
-# include "color/mlx_utility.h"
-#define PATH 1
+#include "main.h"
+
+int	ft_close(t_mlx *vars)
+{
+	mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
+	exit(0);
+	return (0);
+}
 
 int	main(int argc, char *argv[])
 {
@@ -24,6 +38,7 @@ int	main(int argc, char *argv[])
 	mlx_put_image_to_window(mlx_vars.mlx_ptr, mlx_vars.win_ptr, \
 	mlx_vars.wins.img, 0, 0);
 	mlx_key_hook(mlx_vars.win_ptr, key_code_press, &mlx_vars);
+	mlx_hook(mlx_vars.win_ptr, 17, 0, ft_close, &mlx_vars);
 	mlx_loop(mlx_vars.mlx_ptr);
 	free_scene(scene);
 	return (0);

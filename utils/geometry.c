@@ -1,8 +1,21 @@
-# include "util.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   geometry.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuikim <yuikim@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/02 13:39:59 by yuikim            #+#    #+#             */
+/*   Updated: 2023/09/02 13:53:56 by yuikim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-double degrees_to_radians(double degree)
+#include "util.h"
+
+double	degrees_to_radians(double degree)
 {
-	double pi;
+	double	pi;
+
 	pi = 3.1415926535897932385;
-	return (degree * pi) / 180; 
+	return ((degree * pi) / 180);
 }

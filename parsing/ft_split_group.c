@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split_group.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuikim <yuikim@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/02 13:38:57 by yuikim            #+#    #+#             */
+/*   Updated: 2023/09/02 14:04:27 by yuikim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include"parsing.h"
 
@@ -112,24 +123,3 @@ char	**ft_split_group(char *s, int is_whitespace)
 	}
 	return (branch);
 }
-
-// #include<stdio.h>
-
-// int	main(void)
-// {
-// 	char	**p;
-// 	int		i;
-// 	char	*test;
-
-// 	test = "echo \"\'$?         $HOME$HOME$HOME$HOME$? $\'\"                go";
-// 	p = ft_split_group(test, TRUE, TRUE);
-// 	i = 0;
-// 	while (p[i])
-// 	{
-// 		printf("[%s]\n", p[i]);
-// 		i++;
-// 	}
-// 	if (p[i] == 0)
-// 		printf("good");
-// 	return (0);
-// }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   phong_lighting.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuikim <yuikim@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/02 13:39:28 by yuikim            #+#    #+#             */
+/*   Updated: 2023/09/02 13:55:05 by yuikim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../setting/view.h"
 
 int	in_shadow(t_ray_info ray_info, t_ray light_ray, double light_len)
@@ -23,7 +35,6 @@ t_color	get_specular(t_ray object_ray, t_vector to_light,
 
 	ksn = 64;
 	ks = 0.5;
-
 	view_dv = unit(scalar_multiply(object_ray.dv, -1));
 	reflect_dv = reflect_vector(scalar_multiply(to_light, 1), record.normal);
 	spec = pow(max_2(inner_product(view_dv, reflect_dv), 0.0), ksn);
