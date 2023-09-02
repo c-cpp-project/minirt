@@ -1,7 +1,0 @@
-# no .out files
-*/*.out
-*.out
-# no my test dir
-# yuikim/*
-# no test ppm
-*.ppm

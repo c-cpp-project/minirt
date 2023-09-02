@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuikim <yuikim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:39:02 by yuikim            #+#    #+#             */
-/*   Updated: 2023/09/02 14:01:53 by yuikim           ###   ########.fr       */
+/*   Updated: 2023/09/02 14:30:41 by sangwoki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef PARSING_H
 # define PARSING_H

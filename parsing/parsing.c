@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuikim <yuikim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sangwoki <sangwoki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:39:00 by yuikim            #+#    #+#             */
-/*   Updated: 2023/09/02 14:10:41 by yuikim           ###   ########.fr       */
+/*   Updated: 2023/09/02 14:34:39 by sangwoki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,13 @@ t_scene	*tokenizer(char **buffer, t_count *element)
 	while (buffer[i])
 	{
 		split_space = ft_split_group(buffer[i], TRUE);
-		parameter_count(split_space[0], element);
 		parameter_format(split_space, split_space[0]);
+		parameter_count(split_space[0], element);
 		free_split(split_space);
 		i++;
 	}
+	if (element->ambient != 1 || element->camera != 1 || element->light > 1)
+		exit(1);
 	scene = (t_scene *)malloc(sizeof(t_scene));
 	scene->a = extract_ambient(buffer, element);
 	scene->c = extract_camera(buffer, element);
