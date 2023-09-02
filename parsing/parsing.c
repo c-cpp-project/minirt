@@ -1,7 +1,16 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuikim <yuikim@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/02 13:39:00 by yuikim            #+#    #+#             */
+/*   Updated: 2023/09/02 14:10:41 by yuikim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include"parsing.h"
-#define BUFFER_SIZE 32
 
 char	*write_buffer(int fd)
 {
@@ -78,5 +87,6 @@ t_scene	*assign_scene(char *src, t_count *element)
 	buffer = ft_split(src, '\n');
 	scene = tokenizer(buffer, element);
 	free_split(buffer);
+	free(src);
 	return (scene);
 }

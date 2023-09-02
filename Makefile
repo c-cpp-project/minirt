@@ -29,9 +29,7 @@ SRCS = ./color/mlx_color.c \
 		./utils/geometry.c \
 		./utils/max_func.c \
 		./utils/min_func.c \
-		./utils/random.c \
 		./utils/ray.c \
-		./utils/vector_random.c \
 		./utils/vector.c \
 		./utils/vector2.c \
 		./utils/vector3.c \

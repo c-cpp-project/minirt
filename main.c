@@ -1,9 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuikim <yuikim@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/02 13:40:41 by yuikim            #+#    #+#             */
+/*   Updated: 2023/09/02 14:08:33 by yuikim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include "structure.h"
-# include "parsing/parsing.h"
-# include "parsing/__init__.h"
-# include "color/mlx_utility.h"
-#define PATH 1
+#include "main.h"
 
 int	ft_close(t_mlx *vars)
 {

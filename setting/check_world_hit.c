@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_world_hit.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuikim <yuikim@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/02 13:39:21 by yuikim            #+#    #+#             */
+/*   Updated: 2023/09/02 13:59:31 by yuikim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "view.h"
 
 t_hit_record	hit_cylinders(t_ray_info ray_info, t_ray ray,
@@ -44,8 +56,6 @@ t_hit_record	hit_world(t_ray_info ray_info, t_ray ray,
 	}
 	return (result);
 }
-
-
 
 int	current_min(double target, double compared,
 	double t_min, double t_max)

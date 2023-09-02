@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_hit.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuikim <yuikim@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/02 13:39:16 by yuikim            #+#    #+#             */
+/*   Updated: 2023/09/02 13:56:17 by yuikim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "view.h"
 
 void	get_cylinder_side_normal(t_hit_record *record, t_cylinder cylinder)
@@ -20,7 +32,6 @@ t_hit_record	hit_cylinder(t_cylinder cylinder, t_ray ray)
 	t1 = hit_cylinder_cap(cylinder, ray, cylinder.bottom);
 	t2 = hit_cylinder_cap(cylinder, ray, cylinder.top);
 	t3 = hit_cylinder_side(cylinder, ray);
-
 	t = positive_min_2(positive_min_2(t1, t2), t3);
 	record.t = t;
 	record.pos = ray_at(&ray, t);
